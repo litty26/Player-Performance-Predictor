@@ -4,18 +4,23 @@ import joblib
 import matplotlib.pyplot as plt
 import numpy as np
 from unidecode import unidecode
-import requests
-from io import BytesIO
+import gdown
+import os
 
-# Load dataset
+# Load dataset from GitHub raw link
 data = pd.read_csv("https://raw.githubusercontent.com/litty26/Player-Performance-Predictor/refs/heads/main/Org_Dataset.csv")
 
 # Google Drive file ID for your .pkl file
 file_id = "1ix5JIWGDoJPSzxx2aov_KScfkUFHpd2E"  # Replace with your actual ID
 url = f"https://drive.google.com/uc?id={file_id}"
-response = requests.get(url)
-model = joblib.load(BytesIO(response.content))
+model_path = "player_rating_pipeline.pkl"
 
+# Download model only if not already present
+if not os.path.exists(model_path):
+    gdown.download(url, model_path, quiet=False)
+
+# Load model
+model = joblib.load(model_path)
 
 # Clean player names for better matching
 data['name_clean'] = data['display_name'].apply(lambda x: unidecode(x.lower()))
