@@ -8,7 +8,7 @@ import gdown
 import os
 
 # Load dataset
-data = pd.read_csv("Org_Dataset.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/litty26/Player-Performance-Predictor/refs/heads/main/Org_Dataset.csv")
 
 # Google Drive file ID for your .pkl file
 file_id = "1ix5JIWGDoJPSzxx2aov_KScfkUFHpd2E"  # Replace with your actual ID
