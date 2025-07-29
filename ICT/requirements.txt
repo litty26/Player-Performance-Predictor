@@ -4,4 +4,4 @@ numpy
 matplotlib
 joblib
 unidecode
-gdwon
+gdown
