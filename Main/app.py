@@ -4,20 +4,10 @@ import joblib
 import matplotlib.pyplot as plt
 import numpy as np
 from unidecode import unidecode
-import gdown
-import os
 
-# Google Drive file ID
-file_id = "1ix5JIWGDoJPSzxx2aov_KScfkUFHpd2E"
-url = f"https://drive.google.com/uc?id={file_id}"
-output = "player_rating_pipeline.pkl"
-
-# Download only if not already present
-if not os.path.exists(output):
-    gdown.download(url, output, quiet=False)
-
-# Load the model
-model = joblib.load(output)
+# Load dataset and model
+data = pd.read_csv("Org_Dataset.csv")
+model = joblib.load("player_rating_pipeline.pkl")
 
 # Clean player names for better matching
 data['name_clean'] = data['display_name'].apply(lambda x: unidecode(x.lower()))
