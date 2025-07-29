@@ -7,7 +7,7 @@ from unidecode import unidecode
 
 # Load dataset and model
 data = pd.read_csv("Main/dataset.csv")
-model = joblib.load("player_rating_pipeline.pkl")
+model = joblib.load("Main/player_rating_pipeline.pkl")
 
 # Clean player names for better matching
 data['name_clean'] = data['display_name'].apply(lambda x: unidecode(x.lower()))
