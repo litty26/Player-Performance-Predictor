@@ -6,7 +6,7 @@ import numpy as np
 from unidecode import unidecode
 
 # Load dataset and model
-data = pd.read_excel("Org_Dataset.xlsx")
+data = pd.read_csv("Org_Dataset.csv")
 model = joblib.load("player_rating_pipeline.pkl")
 
 # Clean player names for better matching
